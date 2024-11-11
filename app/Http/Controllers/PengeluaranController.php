@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\KategoriPengeluaran;
 use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Carbon;
+=======
+>>>>>>> 052574911cde4b2ea421ba5bce97e228800aa398
 
 class PengeluaranController extends Controller
 {
@@ -19,6 +22,7 @@ class PengeluaranController extends Controller
         if ($request->filled('tanggal')) {
             $query->whereDate('tanggal', $request->tanggal);
         }
+<<<<<<< HEAD
 
         $pengeluarans = $query->with('kategori')->paginate(10);
 
@@ -40,6 +44,13 @@ class PengeluaranController extends Controller
             'averageDailyExpense' => $averageDailyExpense,
             'largestExpense' => $largestExpense,
         ]);
+=======
+        // $pemasukan = Pemasukan::latest()->paginate(10);
+        $pengeluarans = $query->with('kategori')->paginate(10);
+        $kategori = KategoriPengeluaran::latest()->paginate(10);
+        $total = $query->sum('jumlah');
+        return view('Features.pengeluaran.pengeluaran',['pengeluarans'=>$pengeluarans,'kpengeluaran'=>$kategori,'total'=>$total]);
+>>>>>>> 052574911cde4b2ea421ba5bce97e228800aa398
     }
 
     public function create(){

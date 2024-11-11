@@ -26,5 +26,8 @@ Route::resource('/kpengeluaran',KategoriPengeluaranController::class)->middlewar
 Route::resource('/pemasukan',PemasukanController::class)->middleware('auth');
 Route::resource('/pengeluaran',PengeluaranController::class)->middleware('auth');
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 052574911cde4b2ea421ba5bce97e228800aa398

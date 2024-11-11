@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\KategoriPemasukan;
 use App\Models\Pemasukan;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Carbon;
+=======
+>>>>>>> 052574911cde4b2ea421ba5bce97e228800aa398
 
 class PemasukanController extends Controller
 {
@@ -19,6 +22,7 @@ class PemasukanController extends Controller
         if ($request->filled('tanggal')) {
             $query->whereDate('tanggal', $request->tanggal);
         }
+<<<<<<< HEAD
 
         $pemasukans = $query->with('kategori')->paginate(10);
         $kategori = KategoriPemasukan::latest()->paginate(10);
@@ -33,6 +37,13 @@ class PemasukanController extends Controller
             'total' => $total,
             'averageDailyIncome' => $averageDailyIncome // Pass this to the view
         ]);
+=======
+        // $pemasukan = Pemasukan::latest()->paginate(10);
+        $pemasukans = $query->with('kategori')->paginate(10);
+        $kategori = KategoriPemasukan::latest()->paginate(10);
+        $total = $query->sum('jumlah');
+        return view('Features.pemasukan.pemasukan',['pemasukans'=>$pemasukans,'kpemasukan'=>$kategori,'total'=>$total]);
+>>>>>>> 052574911cde4b2ea421ba5bce97e228800aa398
     }
 
     public function create(){
@@ -73,6 +84,7 @@ class PemasukanController extends Controller
         Pemasukan::destroy($id);
         return redirect('pemasukan')->with('pesan','Data berhasil dihapus');
     }
+<<<<<<< HEAD
 
     public function averageDailyIncome()
     {
@@ -86,4 +98,6 @@ class PemasukanController extends Controller
         // Menyertakan nilai rata-rata ke dalam view
         return view('Features.pemasukan.pemasukan', compact('averageDailyIncome'));
     }
+=======
+>>>>>>> 052574911cde4b2ea421ba5bce97e228800aa398
 }
